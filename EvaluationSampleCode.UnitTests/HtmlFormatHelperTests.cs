@@ -27,7 +27,17 @@ namespace EvaluationSampleCode.UnitTests
             Assert.AreEqual("<i>Hello</i>", result);
         }
 
-     
+        [TestMethod]
+        public void GetFormattedListElements_WithMultipleElements_ShouldReturnHtmlList()
+        {
+            var helper = new HtmlFormatHelper();
+            var contents = new List<string> { "One", "Two", "Three" };
+
+            var result = helper.GetFormattedListElements(contents);
+
+            var expected = "<ul><li>One</li><li>Two</li><li>Three</li></ul>";
+            Assert.AreEqual(expected, result);
+        }
 
         [TestMethod]
         public void GetFormattedListElements_WithEmptyList_ShouldReturnEmptyUl()
