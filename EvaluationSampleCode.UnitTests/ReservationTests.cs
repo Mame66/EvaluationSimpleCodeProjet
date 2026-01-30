@@ -27,6 +27,17 @@ namespace EvaluationSampleCode.UnitTests
 
             Assert.IsTrue(result);
         }
-        
+
+        [TestMethod]
+        public void CanBeCancelledBy_WhenUserIsNotAdminAndNotOwner_ShouldReturnFalse()
+        {
+            var owner = new User { IsAdmin = false };
+            var otherUser = new User { IsAdmin = false };
+            var reservation = new Reservation(owner);
+
+            var result = reservation.CanBeCancelledBy(otherUser);
+
+            Assert.IsFalse(result);
+        }
     }
 }
