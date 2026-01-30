@@ -17,10 +17,16 @@ namespace EvaluationSampleCode.UnitTests
 
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void CanBeCancelledBy_WhenUserIsOwner_ShouldReturnTrue()
+        {
+            var user = new User { IsAdmin = false };
+            var reservation = new Reservation(user);
 
+            var result = reservation.CanBeCancelledBy(user);
 
-       
-
+            Assert.IsTrue(result);
+        }
         
     }
 }
